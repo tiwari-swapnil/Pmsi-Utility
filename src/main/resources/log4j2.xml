@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">[%style{%d{dd-MM-yyyy HH:mm:ss.SSS}}{dim}] [%highlight{%5p}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue, TRACE=cyan}] [%style{%t}{magenta}] [%style{%logger{1.}}{cyan}] : %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false" />
+        </Console>
+
+        <RollingFile name="FileAppender"
+                     fileName="/tmp/pmsiUtility.log"
+                     filePattern="/tmp/pmsiUtility.log.%d{yyyy-MM-dd-a}.gz">
+            <PatternLayout pattern="[%d{dd-MM-yyyy HH:mm:ss.SSS}] [%level] [%t] [%logger{1.}] : %msg%n" />
+            <Policies>
+                <CronTriggeringPolicy schedule="0 0 0,12 * * ?" />
+            </Policies>
+            <DefaultRolloverStrategy max="30" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="ERROR" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Logger>
+
+        <Logger name="swapnil.pmsiUtility_v1" level="TRACE" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

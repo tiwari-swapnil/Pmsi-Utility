@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: pmsiUtility
+
+server:
+  tomcat:
+    connection-timeout: 100000
+  port: 11783
+  servlet:
+    context-path: /pmsi_utility
+
+logging:
+  config: classpath:log4j2.xml
+  level:
+    org.springframework: ERROR
+    swapnil.pmsiUtility_v1: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
