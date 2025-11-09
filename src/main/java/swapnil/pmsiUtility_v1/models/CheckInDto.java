@@ -3,6 +3,7 @@ package swapnil.pmsiUtility_v1.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.sql.Date;
@@ -24,7 +25,7 @@ public class CheckInDto {
     @NotBlank(message = "RoomNumber is required")
     private String roomNumber;
 
-    @NotBlank(message = "IsSharer is required")
+    @NotNull(message = "IsSharer is required")
     private boolean isSharer;
 
     @NotBlank(message = "GuestLanguage is required")
@@ -37,11 +38,11 @@ public class CheckInDto {
     private Date currentDate;
 
     @JsonFormat(pattern = "yyMMdd")
-    @NotBlank(message = "Guest arrival date is required")
+    @NotNull(message = "Guest arrival date is required")
     private Date guestArrivalDate;
 
     @JsonFormat(pattern = "yyMMdd")
-    @NotBlank(message = "Guest departure date is required")
+    @NotNull(message = "Guest departure date is required")
     private Date guestDepartureDate;
 
     @JsonFormat(pattern = "HHmmss")

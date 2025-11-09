@@ -26,13 +26,14 @@ public class PmsUtils {
             StringBuilder checkInString = new StringBuilder();
 
             checkInString.append(PmsOperations.CHECK_IN.getCode())
+                    .append("|")
                     .append(PmsFields.GUEST_ID.getCode()).append(data.getGuestId())
                     .append("|").append(PmsFields.ROOM_NUMBER.getCode()).append(data.getRoomNumber())
                     .append("|").append(PmsFields.GUEST_NAME.getCode()).append(data.getGuestName())
                     .append("|").append(PmsFields.GUEST_SURNAME.getCode()).append(data.getGuestSurname())
                     .append("|").append(PmsFields.GUEST_TITLE.getCode()).append(data.getGuestTitle())
-                    .append("|").append(PmsFields.GUEST_ARRIVAL_DATE.getCode()).append(data.getGuestArrivalDate())
-                    .append("|").append(PmsFields.GUEST_DEPARTURE_DATE.getCode()).append(data.getGuestDepartureDate())
+                    .append("|").append(PmsFields.GUEST_ARRIVAL_DATE.getCode()).append(data.getGuestArrivalDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)))
+                    .append("|").append(PmsFields.GUEST_DEPARTURE_DATE.getCode()).append(data.getGuestDepartureDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)))
                     .append("|").append(PmsFields.DATE.getCode())
                     .append(LocalDate.now().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)))
                     .append("|").append(PmsFields.TIME.getCode())
@@ -105,8 +106,8 @@ public class PmsUtils {
                     appendIfNotBlank(infoUpdateString, PmsFields.GUEST_NAME.getCode(), data.getGuestName());
                     appendIfNotBlank(infoUpdateString, PmsFields.GUEST_SURNAME.getCode(), data.getGuestSurname());
                     appendIfNotBlank(infoUpdateString, PmsFields.GUEST_TITLE.getCode(), data.getGuestTitle());
-                    appendIfNotBlank(infoUpdateString, PmsFields.GUEST_ARRIVAL_DATE.getCode(), data.getGuestArrivalDate().toString());
-                    appendIfNotBlank(infoUpdateString, PmsFields.GUEST_DEPARTURE_DATE.getCode(), data.getGuestDepartureDate().toString());
+                    appendIfNotBlank(infoUpdateString, PmsFields.GUEST_ARRIVAL_DATE.getCode(), data.getGuestArrivalDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
+                    appendIfNotBlank(infoUpdateString, PmsFields.GUEST_DEPARTURE_DATE.getCode(), data.getGuestDepartureDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
 
                     appendIfNotBlank(infoUpdateString, PmsFields.DATE.getCode(), LocalDate.now().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
                     appendIfNotBlank(infoUpdateString, PmsFields.TIME.getCode(), LocalTime.now().format(DateTimeFormatter.ofPattern(PmsConstants.TIME_FORMAT)));
@@ -158,8 +159,8 @@ public class PmsUtils {
             appendIfNotBlank(roomTransferString, PmsFields.GUEST_NAME.getCode(), data.getGuestName());
             appendIfNotBlank(roomTransferString, PmsFields.GUEST_SURNAME.getCode(), data.getGuestSurname());
             appendIfNotBlank(roomTransferString, PmsFields.GUEST_TITLE.getCode(), data.getGuestTitle());
-            appendIfNotBlank(roomTransferString, PmsFields.GUEST_ARRIVAL_DATE.getCode(), data.getGuestArrivalDate().toString());
-            appendIfNotBlank(roomTransferString, PmsFields.GUEST_DEPARTURE_DATE.getCode(), data.getGuestDepartureDate().toString());
+            appendIfNotBlank(roomTransferString, PmsFields.GUEST_ARRIVAL_DATE.getCode(), data.getGuestArrivalDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
+            appendIfNotBlank(roomTransferString, PmsFields.GUEST_DEPARTURE_DATE.getCode(), data.getGuestDepartureDate().toLocalDate().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
 
             appendIfNotBlank(roomTransferString, PmsFields.DATE.getCode(), LocalDate.now().format(DateTimeFormatter.ofPattern(PmsConstants.DATE_FORMAT)));
             appendIfNotBlank(roomTransferString, PmsFields.TIME.getCode(), LocalTime.now().format(DateTimeFormatter.ofPattern(PmsConstants.TIME_FORMAT)));
