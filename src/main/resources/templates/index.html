@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS Utility Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<h1>PMS Utility Dashboard</h1>
+
+<div class="grid">
+    <div class="block" onclick="navigate('checkin.html')">
+        <span>Guest</span> Check-In
+    </div>
+    <div class="block" onclick="navigate('checkout.html')">
+        <span>Guest</span> Check-Out
+    </div>
+    <div class="block" onclick="navigate('infoUpdate.html')">
+        <span>Guest</span> Info Update
+    </div>
+    <div class="block" onclick="navigate('roomTransfer.html')">
+        <span>Guest</span> Room Transfer
+    </div>
+</div>
+
+<footer>© 2025 PMS Utility | All Rights Reserved</footer>
+
+<script>
+    function navigate(page) {
+        window.location.href = page;
+    }
+</script>
+
+</body>
+</html>
